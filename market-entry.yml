@@ -8,12 +8,12 @@
 # Requirements:
 #   - dsh.bundle manifest in the root package.json            yes
 #   - real, working code                                      yes
-#   - repo at least 1 day old (CI-checked)                    create the repo first
+#   - repo at least 1 day old (CI-checked)                    gate opens 2026-10-12 00:01 +08:00
 #   - add the "dsh-plugin" topic on the GitHub repo           yes
 #   - description states what the plugin does, no marketing   yes
 url: https://github.com/devil233-ui/dsh-auto-review-default
 name: devil233-ui/dsh-auto-review-default
 category: security
 description:
-  en: 'Starts every newly created session in the built-in Auto review permission preset instead of the profile default.'
-  zh: '让每个新建会话默认进入内置的 Auto review 权限预设，而不是配置里的默认预设。'
+  en: 'Puts sessions into the built-in Auto review permission preset: new sessions at creation, existing root sessions when they are restored.'
+  zh: '让会话进入内置的 Auto review 权限预设：新建会话在创建时进入，已有的根会话在重新打开时切过去。'

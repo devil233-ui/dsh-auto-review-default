@@ -1,7 +1,7 @@
 {
   "name": "dsh-auto-review-default",
-  "version": "0.1.0",
-  "description": "Start every newly created DeepSeek Harness session in the built-in Auto review permission preset instead of the configured default preset.",
+  "version": "0.2.0",
+  "description": "Put DeepSeek Harness sessions into the built-in Auto review permission preset: new sessions at creation, existing root sessions when they are restored.",
   "type": "module",
   "license": "MIT",
   "author": "devil233-ui",
