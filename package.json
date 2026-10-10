@@ -1,0 +1,48 @@
+{
+  "name": "dsh-auto-review-default",
+  "version": "0.1.0",
+  "description": "Start every newly created DeepSeek Harness session in the built-in Auto review permission preset instead of the configured default preset.",
+  "type": "module",
+  "license": "MIT",
+  "author": "devil233-ui",
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json",
+    "./cordis.patch.yml": "./cordis.patch.yml"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "README.en.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "dsh",
+    "permission-preset",
+    "auto-review",
+    "approval"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devil233-ui/dsh-auto-review-default.git"
+  },
+  "homepage": "https://github.com/devil233-ui/dsh-auto-review-default#readme",
+  "bugs": {
+    "url": "https://github.com/devil233-ui/dsh-auto-review-default/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-permission-presets": "*"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

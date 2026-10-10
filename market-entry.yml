@@ -1,0 +1,19 @@
+# Submission entry for the awesome-dsh-plugin registry
+# (https://github.com/awesome-dsh-plugin/awesome-dsh-plugin).
+#
+# To publish: fork that repo, add this file as
+#   data/plugins/devil233-ui__dsh-auto-review-default.yml
+# and open a PR. The two READMEs there are generated — do not edit them.
+#
+# Requirements:
+#   - dsh.bundle manifest in the root package.json            yes
+#   - real, working code                                      yes
+#   - repo at least 1 day old (CI-checked)                    create the repo first
+#   - add the "dsh-plugin" topic on the GitHub repo           yes
+#   - description states what the plugin does, no marketing   yes
+url: https://github.com/devil233-ui/dsh-auto-review-default
+name: devil233-ui/dsh-auto-review-default
+category: security
+description:
+  en: 'Starts every newly created session in the built-in Auto review permission preset instead of the profile default.'
+  zh: '让每个新建会话默认进入内置的 Auto review 权限预设，而不是配置里的默认预设。'

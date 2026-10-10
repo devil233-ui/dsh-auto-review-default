@@ -1,0 +1,3 @@
+- insert:
+    - id: auto-review-default
+      name: 'dsh-auto-review-default'
