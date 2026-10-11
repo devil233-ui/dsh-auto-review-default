@@ -37,6 +37,7 @@ dsh plugin --profile web add github:devil233-ui/dsh-auto-review-default
 
 - **永不抛出**。`session/created` 里的同步异常会否决并回滚会话创建，所以这里任何失败都降级为「保持会话当前预设」，只写一行警告日志。
 - **不碰委托子会话**：`dsh-subagent` 会给子会话打 `origin: "subagent"` 与正的 `delegationDepth`（根会话持久化后是 `delegationDepth: 0`，所以只有正数才算子会话）。header 读不出来时一律当作子会话处理，不做猜测。
+- **不碰定时任务运行器的会话**：`@michengai/dsh-automation` 的运行会话 id 以 `dsh-automation-session-` 开头，任务创建时自带无人值守预设（通常 `approval: never`），切到 Auto 会把每一步都变成无人应答的授权弹窗（v0.2.0 的实际事故，v0.2.1 修复）。
 - **幂等**，并通过 Cordis effect 的 disposer 可逆；在 Auto 不可用（实验层未启用）时自动降级。
 
 ## 验证记录
@@ -49,6 +50,7 @@ dsh plugin --profile web add github:devil233-ui/dsh-auto-review-default
 | 不装插件新建会话（基线） | `preset: "workspace-write"` |
 | **装插件后恢复那个基线会话** | **`preset: "auto"`**（恢复时切换） |
 | 模型起子代理产生的子会话 | 插件未采纳（探针实测 `isChild=true` 被拦下）；子会话上的 `permission/preset auto` 是 `dsh-subagent` 自己把父会话预设拷进去的 |
+| `dsh-automation-session-*` 运行会话 | 插件不采纳，保持任务自带的无人值守预设（v0.2.1） |
 
 在 DSH Desktop `0.2.0-rc.2` 上验证。
 

@@ -37,6 +37,7 @@ This does wrap a host-internal method rather than an official extension point; s
 
 - **Never throws.** A synchronous throw inside `session/created` vetoes and rolls back session publication, so every failure here degrades to keeping whatever preset the session already had — it only writes a warning line.
 - **Never touches delegated subagent children**: `dsh-subagent` stamps `origin: "subagent"` and a positive `delegationDepth` (persistence writes `delegationDepth: 0` for root sessions, so only a positive depth means a child). An unreadable header counts as a child: leave it alone rather than guess.
+- **Never touches scheduled-task runner sessions**: `@michengai/dsh-automation` names its run sessions with the fixed `dsh-automation-session-` prefix, and a task carries its own unattended preset (typically `approval: never`) — flipping it to Auto would turn every step into an approval prompt nobody may answer (the actual v0.2.0 incident, fixed in v0.2.1).
 - **Idempotent**, reversible through the Cordis effect disposer, and degrades automatically when Auto is unavailable.
 
 ## Verification
@@ -49,6 +50,7 @@ Measured in an isolated `headless` profile with one-shot tasks, reading the sess
 | New session without it (baseline) | `preset: "workspace-write"` |
 | **Reopening that baseline session with the plugin** | **`preset: "auto"`** (switched on restore) |
 | A subagent child spawned by the model | not adopted by this plugin (a probe measured `isChild=true` and the guard held); the `permission/preset auto` on the child is written by `dsh-subagent` copying the parent's preset |
+| A `dsh-automation-session-*` run session | not adopted; keeps the task's own unattended preset (v0.2.1) |
 
 Verified on DSH Desktop `0.2.0-rc.2`.
 
